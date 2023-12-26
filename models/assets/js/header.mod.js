@@ -1,8 +1,11 @@
+/**
+ * Header module for managing website navigation.
+ */
 const Header = (function () {
+    // Model: Define the navigation links array
     const model = {
-
-        // Define your navigation links array based on the provided format
         navigationLinks: [
+            // Define your navigation links based on the provided format
             { label: 'Home', href: '#hero', classList: 'nav-link scrollto active' },
             { label: 'About', href: '#about', classList: 'nav-link scrollto' },
             { label: 'Services', href: '#services', classList: 'nav-link scrollto' },
@@ -36,15 +39,19 @@ const Header = (function () {
             { label: 'Contact', href: '#contact', classList: 'nav-link scrollto' },
             { label: 'Get Started', href: '#about', classList: 'getstarted scrollto' },
         ],
-
     };
+
     const view = {
-
-
+        // View functions can be added here if needed
     }
 
     const controller = {
-        buildNav: function (strPageName) {
+        /**
+         * Build the navigation menu based on the provided navigationLinks array.
+         * @param {string} pageName - The name of the current page.
+         * @returns {DocumentFragment} - The document fragment containing the navigation menu.
+         */
+        buildNav: function (pageName) {
             const navFragment = document.createDocumentFragment();
             // Loop through the navigationLinks array to create the navigation nodes
             model.navigationLinks.forEach((link) => {
@@ -81,6 +88,11 @@ const Header = (function () {
             return navFragment;
         },
     }
+
+    // Public API
+    return {
+        // Initialization function or any other public functions can be added here if needed
+    };
 })();
 
 export { Header }
