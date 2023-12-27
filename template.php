@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <script type="text/javascript" language="javascript" src="models/assets/js/config.js"></script> 
-  <script type="text/javascript" language="javascript" src="models/assets/js/jquery.js"></script> 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <script type="text/javascript" language="javascript" src="models/assets/js/vendor/jquery.js"></script> 
   <script type="module" defer>
-    import {App} from "./models/assets/js/app.mjs";
+    import {CONFIG} from "./models/assets/js/mods/config.mod.mjs";
+    import {App} from "./models/assets/js/mods/app.mod.mjs";
+    console.log(App.init);
+    
     $(document).ready(function(){    
         console.log(CONFIG);
         CONFIG.title = "Home";

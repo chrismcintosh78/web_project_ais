@@ -1,7 +1,7 @@
 /**
  * Handlers module for managing various UI interactions and behaviors.
  */
-const Handlers = (function() {
+const UIManager = (function() {
   // Model: Stores references to UI elements
   const model = {
     header: $('#header'),          // Reference to the header element
@@ -11,6 +11,13 @@ const Handlers = (function() {
 
   // View: Manages UI interactions and behaviors
   const view = {
+    toggleBacktotop: () => {
+      if (window.scrollY > 100) {
+        model.bk2TopButton.addClass('active')
+      } else {
+        model.bk2TopButton.removeClass('active')
+      }
+    },
     /**
      * Activate navbar links based on scroll position.
      */
@@ -53,7 +60,9 @@ const Handlers = (function() {
      * @returns {Function} - A function that handles the sticky behavior.
      */
     stickyHeader: function() {
-      let objHeader = model.header; // Reference to the header tag object
+      let objHeader = model.header; 
+      console.log(objHeader);
+      // Reference to the header tag object
       let headerOffset = $('#header').offsetTop;
       let nextElement = $('#header').next();
       const sticky = () => {
@@ -75,9 +84,13 @@ const Handlers = (function() {
      * @param {Event} e - The click event.
      */
     mblNavToggle: function (e) {
-      $('#navbar').classList.toggle('navbar-mobile');
-      this.classList.toggle('bi-list');
-      this.classList.toggle('bi-x');
+      let objHamBurger = $(e.target);
+      console.log(objHamBurger);
+      $('#navbar').toggleClass('navbar-mobile');
+      $(this).toggleClass('bi-list');
+      $(this).toggleClass('bi-x');
+      //alert(this);
+      console.log(this);
     },
 
     // Add more view functions as needed
@@ -94,8 +107,12 @@ const Handlers = (function() {
      * @param {string} el - The selector for the target element.
      * @param {Function} handler - The event handler function.
      */
-    register: function(obj, event, el, handler) {
-      $(obj).on(event, el, handler);
+    register: function(obj, event, el=null, handler) {
+      if(el){
+       $(obj).on(event, el, handler);
+      }else{
+        $(obj).on(event, handler);
+      }
     },
 
     // Add more controller functions as needed
@@ -108,6 +125,7 @@ const Handlers = (function() {
   function init() {
     // Register event handlers
     controller.register(window, "load", () => {
+      alert("hi")
       if (window.location.hash) {
         if (select(window.location.hash)) {
           scrollto(window.location.hash);
@@ -122,10 +140,8 @@ const Handlers = (function() {
       controller.register(document, "scroll", view.stickyHeader());
     }
 
-    if ($('.back-to-top')) {
       controller.register(window, "load", view.toggleBacktotop);
       controller.register(document, "scroll", view.toggleBacktotop);
-    }
 
     controller.register(window, "load", view.navbarlinksActive);
     controller.register(document, "scroll", view.navbarlinksActive);
@@ -138,4 +154,4 @@ const Handlers = (function() {
 
 })();
 
-export { Handlers };
+export { UIManager };
