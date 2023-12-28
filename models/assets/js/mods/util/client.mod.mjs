@@ -1,7 +1,6 @@
 /**
  * Client module for detecting and storing client-related information.
  */
-*/
 const Client = (function() {
   const model = {
     browserType: null,
