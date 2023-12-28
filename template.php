@@ -8,9 +8,17 @@
   <script type="module" defer>
     import {CONFIG} from "./models/assets/js/mods/config.mod.mjs";
     import {App} from "./models/assets/js/mods/app.mod.mjs";
+    import {Emitter} from "./models/assets/js/mods/util/emitter.mod.mjs"
+    import {} from "./models/assets/js/mods/uimanager.mod.mjs"
     console.log(App.init);
     
-    $(document).ready(function(){    
+    $(document).ready(function(){   
+      Emitter.init();
+      Emitter.on("load", funtion(){
+        UIManager.postLoad();
+      })
+      Emitter.off() 
+      UIManager.init();
         console.log(CONFIG);
         CONFIG.title = "Home";
         App.init(CONFIG);        

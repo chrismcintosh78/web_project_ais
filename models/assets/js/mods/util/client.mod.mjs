@@ -1,8 +1,8 @@
 /**
  * Client module for detecting and storing client-related information.
  */
+*/
 const Client = (function() {
-  // Model: Stores the detected browser features
   const model = {
     browserType: null,
     browserPlatform: null,
@@ -14,49 +14,100 @@ const Client = (function() {
     userMediaSupport: null,
     canvasSupport: null,
     xmlHttpRequestSupport: null,
-    
-    /**
-     * Detects the browser type.
-     *
-     * @returns {string} - The detected browser type (e.g., 'Chrome', 'Firefox', 'Safari', 'Internet Explorer', 'Unknown').
-     */
-    detectBrowserType: function() {
-      // ... (implementation details)
-    },
-    
-    // Additional properties and detection functions...
+    // Add more feature properties as needed
   };
 
-  // Controller: Manages feature detection and provides access to the model
-  const Controller = {
-    /**
-     * Detects client features and updates the model.
-     */
-    detectFeatures: function() {
-      // ... (implementation details)
-    },
+  // View: Manages the presentation of detected features (no traditional UI)
+  // Since there's no traditional UI, this part can be minimal or omitted
 
-    /**
-     * Get a copy of the client model.
-     *
-     * @returns {Object} - A copy of the client model to prevent modification.
-     */
+  // Controller: Manages feature detection and provides access to the model
+  const controller = {
+        // Detects browser platform (Linux, Mac, Windows, etc.)
+      detectBrowserPlatform: () => {
+        let userAgent = navigator.userAgent;
+        let platform = null;
+
+        if(/(Win|Win32|Win64|Windows)/i.test(userAgent)){
+          platfprm = "Windows";
+        }else if(/(Mac|Macintosh|MacIntel|MacPPC)/i.test(userAgent)){
+          platfprm = "Mac OsS";
+
+        }else if(/(Linux)/i.test(userAgent)){
+          platform = "Linux";
+        }
+        return platform;
+      },
+    
+      // Detects if the browser is mobile
+      detectMobileBrowser: () =>  {
+        return /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      },
+      detectBrowserType: () => {
+        const userAgent = navigator.userAgent;
+        if (userAgent.includes('Chrome')) {
+          return 'Chrome';
+        } else if (userAgent.includes('Firefox')) {
+          return 'Firefox';
+        } else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) {
+          return 'Safari';
+        } else if (userAgent.includes('Trident') || userAgent.includes('MSIE')) {
+          return 'Internet Explorer';
+        } else {
+          return 'Unknown';
+        }
+      },
+      checkXMLHttpRequestSupport: () => {
+        return !!window.XMLHttpRequest;
+      },
+        detectFeatures: function() {
+        model.browserType = detectBrowserType();
+        model.browserPlatform = detectBrowserPlatform();
+        model.isMobile = detectMobileBrowser();
+        model.screenDimensions = detectScreenDimensions();
+        model.userMediaSupport = checkUserMediaSupport();
+        model.canvasSupport = checkCanvasSupport();
+        model.xmlHttpRequestSupport = checkXMLHttpRequestSupport();
+        // Add more feature detection here as needed
+      },
     getModel: function() {
-      return { ...model };
+      return { ...model }; // Return a copy of the model to prevent modification
     }
   };
 
-  /**
-   * Initializes the Client module by detecting client features.
-   */
-  function init(){
-    Controller.detectFeatures();
-  }
+  // Detects browser type (Chrome, Firefox, Safari, IE, etc.)
 
+
+
+
+  // Detects screen dimensions
+
+        // Check for XML HTTP request support
+
+  view ={
+       // Check for user media support
+      checkUserMediaSupport: () => {
+        return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+      },
+    
+      // Check for canvas support
+      checkCanvasSupport: () => {
+        const canvas = document.createElement('canvas');
+        return !!(canvas.getContext && canvas.getContext('2d'));
+      },
+      detectScreenDimensions: ()  => {
+        return {
+          width: window.innerWidth,
+          height: window.innerHeight
+        };
+      }
+   }
+   function init(){
+      controller.detectFeatures();
+   }
   // Public API
   return {
-    init: init,             // Initializes the Client module
-    getModel: Controller.getModel, // Gets a copy of the client model
+    init: init,
+    getModel: controller.getModel
   };
 })();
 

@@ -1,0 +1,43 @@
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Suggested packages:
+  apache2-doc apache2-suexec-pristine | apache2-suexec-custom
+The following NEW packages will be installed:
+  apache2
+0 upgraded, 1 newly installed, 0 to remove and 113 not upgraded.
+Need to get 95.6 kB of archives.
+After this operation, 544 kB of additional disk space will be used.
+Get:1 https://na.network-auth.com/splash/-hTxda_.1.745/?mac=0C:8D:DB:DC:5B:4F&real_ip=10.12.135.224&client_ip=10.36.176.75&client_mac=28:E3:47:BC:89:D9&vap=1&a=fe2ef495a1152561572949784c16bf23abb28057&b=7229933&auth_version=5&key=07998372d53a0224d4677d55a2dc654f08ab85a1&acl_ver=P9749173V2&continue_url=http://us.archive.ubuntu.com/ubuntu focal-updates/main amd64 apache2 amd64 2.4.41-4ubuntu3.15 [95.6 kB]
+Err:1 https://na.network-auth.com/splash/-hTxda_.1.745/?mac=0C:8D:DB:DC:5B:4F&real_ip=10.12.135.224&client_ip=10.36.176.75&client_mac=28:E3:47:BC:89:D9&vap=1&a=fe2ef495a1152561572949784c16bf23abb28057&b=7229933&auth_version=5&key=07998372d53a0224d4677d55a2dc654f08ab85a1&acl_ver=P9749173V2&continue_url=http://us.archive.ubuntu.com/ubuntu focal-updates/main amd64 apache2 amd64 2.4.41-4ubuntu3.15
+  Hash Sum mismatch
+  Hashes of expected file:
+   - SHA512:00d935d6ead05206b0f7695ec756202d72534fec77b54ec6bcb50846804a7dafa3802fc441105c5f250b4b98db1cbd404b945b48115c82ccf5cd437d628c87f8
+   - SHA256:b927d20e88ead153eaf5d37cc2bfa05e69d8c9bdf5e009a00ef96d5ba9c51b09
+   - SHA1:0febe1cf91d7088e1cef86fb44ef7c00a7c90209 [weak]
+   - MD5Sum:7b1c16e6a53d6dd586e6594950079353 [weak]
+   - Filesize:95592 [weak]
+  Hashes of received file:
+   - SHA512:6e77629ca412587c682e0f78e78b61d0ef6499ce6614f5d53eb1c4bb9682c15eb4f77749d59443b1e9b90ba22c8d23667f0a5dc17e2f9fe39f2304695e921830
+   - SHA256:c3e45e1288cbbf4f2172c6623214b8b407d8a0eee5fbbb124ff1614de791fc97
+   - SHA1:addd143802d02a6ba2a169ade549ff857372e761 [weak]
+   - MD5Sum:e7d1082069f188f15938e81ceaa4c03d [weak]
+   - Filesize:10674 [weak]
+  Last modification reported: Wed, 27 Dec 2023 22:20:41 +0000
+Fetched 10.7 kB in 1s (19.0 kB/s)
+E: Failed to fetch https://na.network-auth.com/splash/-hTxda_.1.745/?mac=0C:8D:DB:DC:5B:4F&real_ip=10.12.135.224&client_ip=10.36.176.75&client_mac=28:E3:47:BC:89:D9&vap=1&a=fe2ef495a1152561572949784c16bf23abb28057&b=7229933&auth_version=5&key=07998372d53a0224d4677d55a2dc654f08ab85a1&acl_ver=P9749173V2&continue_url=http://us.archive.ubuntu.com/ubuntu/pool/main/a/apache2/apache2_2.4.41-4ubuntu3.15_amd64.deb  Hash Sum mismatch
+   Hashes of expected file:
+    - SHA512:00d935d6ead05206b0f7695ec756202d72534fec77b54ec6bcb50846804a7dafa3802fc441105c5f250b4b98db1cbd404b945b48115c82ccf5cd437d628c87f8
+    - SHA256:b927d20e88ead153eaf5d37cc2bfa05e69d8c9bdf5e009a00ef96d5ba9c51b09
+    - SHA1:0febe1cf91d7088e1cef86fb44ef7c00a7c90209 [weak]
+    - MD5Sum:7b1c16e6a53d6dd586e6594950079353 [weak]
+    - Filesize:95592 [weak]
+   Hashes of received file:
+    - SHA512:6e77629ca412587c682e0f78e78b61d0ef6499ce6614f5d53eb1c4bb9682c15eb4f77749d59443b1e9b90ba22c8d23667f0a5dc17e2f9fe39f2304695e921830
+    - SHA256:c3e45e1288cbbf4f2172c6623214b8b407d8a0eee5fbbb124ff1614de791fc97
+    - SHA1:addd143802d02a6ba2a169ade549ff857372e761 [weak]
+    - MD5Sum:e7d1082069f188f15938e81ceaa4c03d [weak]
+    - Filesize:10674 [weak]
+   Last modification reported: Wed, 27 Dec 2023 22:20:41 +0000
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+chris@chris-x200ma:/etc/apache2$ 

@@ -11,6 +11,12 @@ const UIManager = (function() {
 
   // View: Manages UI interactions and behaviors
   const view = {
+    toggleDropDown: function(e){
+      if ($('#navbar').hasClass('navbar-mobile')) {
+        e.preventDefault()
+        $(this).next().toggleClass('dropdown-active')
+      }
+    },
     toggleBacktotop: () => {
       if (window.scrollY > 100) {
         model.bk2TopButton.addClass('active')
@@ -53,7 +59,26 @@ const UIManager = (function() {
         behavior: 'smooth',
       });
     },
-
+    postLoad: function(){
+      view.mblNavToggle();
+      view.mblActv8Dropdown();
+view.toggleBacktotop()
+    view.navbarlinksActive();
+    view.stickyHeader();
+    controller.register(window, "load", );
+    alert("hi")
+    if (window.location.hash) {
+      if ($(window.location.hash)) {
+        scrollto(window.location.hash);
+      }
+    }
+    controller.register(document, "scroll", view.stickyHeader());
+      controller.register(document, "scroll", view.toggleBacktotop);
+      controlloer.register(document ,"click",toggleDropDown());
+      controller.register(document, "scroll", view.navbarlinksActive);
+      controller.register(document, 'click', '.mobile-nav-toggle', view.mblNavToggle);
+      controller.register(document,'click', '.navbar .dropdown > a', );
+    }
     /**
      * Make the header sticky when scrolling.
      *
@@ -123,33 +148,13 @@ const UIManager = (function() {
    * Initialize the Handlers module.
    */
   function init() {
-    // Register event handlers
-    controller.register(window, "load", () => {
-      alert("hi")
-      if (window.location.hash) {
-        if (select(window.location.hash)) {
-          scrollto(window.location.hash);
-        }
-      }
-    });
-    controller.register(document, 'click', '.mobile-nav-toggle', view.mblNavToggle);
-    controller.register(document,'click', '.navbar .dropdown > a', view.mblActv8Dropdown);
 
-    if ($('#header')) {
-      controller.register(window, "load", view.stickyHeader());
-      controller.register(document, "scroll", view.stickyHeader());
-    }
-
-      controller.register(window, "load", view.toggleBacktotop);
-      controller.register(document, "scroll", view.toggleBacktotop);
-
-    controller.register(window, "load", view.navbarlinksActive);
-    controller.register(document, "scroll", view.navbarlinksActive);
   }
 
   // Public API
   return {
-    init: init, // Initializes the Handlers module
+    init: init,
+    load: view.postLoad // Initializes the Handlers module
   };
 
 })();

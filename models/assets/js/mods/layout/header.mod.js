@@ -3,6 +3,11 @@
  */
 const Header = (function () {
     // Model: Define the navigation links array
+    Ajax.init(objRequest).then(objRespobse => {
+        objRespobse.getJSON();
+    }).then( data => {
+        view.parseFile();
+    })
     const model = {
         navigationLinks: [
             // Define your navigation links based on the provided format
@@ -51,6 +56,8 @@ const Header = (function () {
          * @param {string} pageName - The name of the current page.
          * @returns {DocumentFragment} - The document fragment containing the navigation menu.
          */
+
+
         buildNav: function (pageName) {
             const navFragment = document.createDocumentFragment();
             // Loop through the navigationLinks array to create the navigation nodes
@@ -88,9 +95,12 @@ const Header = (function () {
             return navFragment;
         },
     }
-
+    function init (objConfig){
+           controllor.buildNav(objConfig.title) 
+    }
     // Public API
     return {
+      init : init
         // Initialization function or any other public functions can be added here if needed
     };
 })();
