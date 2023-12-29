@@ -82,6 +82,7 @@ const UIManager = (function() {
       controller.register(document,'click', '.navbar .dropdown > a', view.mblActv8Dropdown);
     },
     /**
+     *
      * Make the header sticky when scrolling.
      *
      * @returns {Function} - A function that handles the sticky behavior.
