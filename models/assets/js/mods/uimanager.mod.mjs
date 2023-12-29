@@ -13,7 +13,9 @@ const UIManager = (function() {
   const view = {
     toggleDropDown: function(e){
       if ($('#navbar').hasClass('navbar-mobile')) {
-        e.preventDefault()
+        if(e){
+          e.preventDefault();
+        }   
         $(this).next().toggleClass('dropdown-active')
       }
     },
@@ -29,9 +31,11 @@ const UIManager = (function() {
      */
     navbarlinksActive: () => {
       let position = window.scrollY + 200;
-      model.navbarlinks.forEach(navbarlink => {
+      console.log(model);
+      let objNavLinks = model.navbarlinks;
+      Array.prototype.forEach.call(objNavLinks,navbarlink => {
         if (!navbarlink.hash) return;
-        let section = select(navbarlink.hash);
+        let section = $(navbarlink.hash);
         if (!section) return;
         if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
           navbarlink.classList.add('active');
@@ -60,57 +64,74 @@ const UIManager = (function() {
       });
     },
     postLoad: function(){
-      view.mblNavToggle();
+      //view.mblNavToggle();
       view.mblActv8Dropdown();
-view.toggleBacktotop()
-    view.navbarlinksActive();
-    view.stickyHeader();
-    controller.register(window, "load", );
-    alert("hi")
-    if (window.location.hash) {
-      if ($(window.location.hash)) {
-        scrollto(window.location.hash);
+      view.toggleBacktotop()
+      view.navbarlinksActive();
+      view.stickyHeader();
+      if (window.location.hash) {
+        if ($(window.location.hash)) {
+          scrollto(window.location.hash);
+        }
       }
-    }
-    controller.register(document, "scroll", view.stickyHeader());
+      controller.register(document, "scroll", view.stickyHeader());
       controller.register(document, "scroll", view.toggleBacktotop);
-      controlloer.register(document ,"click",toggleDropDown());
+      controller.register(document ,"click",view.toggleDropDown());
       controller.register(document, "scroll", view.navbarlinksActive);
       controller.register(document, 'click', '.mobile-nav-toggle', view.mblNavToggle);
-      controller.register(document,'click', '.navbar .dropdown > a', );
-    }
+      controller.register(document,'click', '.navbar .dropdown > a', view.mblActv8Dropdown);
+    },
     /**
      * Make the header sticky when scrolling.
      *
      * @returns {Function} - A function that handles the sticky behavior.
      */
     stickyHeader: function() {
-      let objHeader = model.header; 
-      console.log(objHeader);
       // Reference to the header tag object
-      let headerOffset = $('#header').offsetTop;
-      let nextElement = $('#header').next();
+      let objHeader = model.header;
+      console.log(objHeader);
+    
+      // Reference to the header element using jQuery
+      let $header = $('#header');
+      
+      // Get the initial offset of the header
+      let headerOffset = $header.offset().top;
+      
+      // Reference to the next element
+      let $nextElement = $header.next();
+      
       const sticky = () => {
-        console.log($('#header'));
-        if ((headerOffset - window.scrollY) <= 0) {
-          $('#header').addClass('fixed-top');
-          nextElement.addClass('scrolled-offset');
+        // Current scroll position
+        let scrollY = window.scrollY;
+        
+        if (scrollY >= headerOffset) {
+          // Add CSS classes to make the header sticky and apply offset to the next element
+          $header.addClass('fixed-top');
+          $nextElement.addClass('scrolled-offset');
         } else {
-          $('#header').removeClass('fixed-top');
-          nextElement.removeClass('scrolled-offset');
+          // Remove the CSS classes if not scrolled enough
+          $header.removeClass('fixed-top');
+          $nextElement.removeClass('scrolled-offset');
         }
       };
+    
       return sticky;
     },
-
+    mblActv8Dropdown: function(e) {
+      if ($('#navbar').hasClass('navbar-mobile')) {
+        if(e){
+          e.preventDefault();
+        }   
+        $(this).next().toggleClass('dropdown-active');
+      }
+    },
     /**
      * Toggle the mobile navigation menu.
      *
      * @param {Event} e - The click event.
      */
-    mblNavToggle: function (e) {
-      let objHamBurger = $(e.target);
-      console.log(objHamBurger);
+    mblNavToggle: function () {
+
       $('#navbar').toggleClass('navbar-mobile');
       $(this).toggleClass('bi-list');
       $(this).toggleClass('bi-x');

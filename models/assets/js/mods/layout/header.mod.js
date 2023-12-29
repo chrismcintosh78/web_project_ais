@@ -2,12 +2,6 @@
  * Header module for managing website navigation.
  */
 const Header = (function () {
-    // Model: Define the navigation links array
-    Ajax.init(objRequest).then(objRespobse => {
-        objRespobse.getJSON();
-    }).then( data => {
-        view.parseFile();
-    })
     const model = {
         navigationLinks: [
             // Define your navigation links based on the provided format

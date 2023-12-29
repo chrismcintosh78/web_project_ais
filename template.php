@@ -9,19 +9,18 @@
     import {CONFIG} from "./models/assets/js/mods/config.mod.mjs";
     import {App} from "./models/assets/js/mods/app.mod.mjs";
     import {Emitter} from "./models/assets/js/mods/util/emitter.mod.mjs"
-    import {UIManagefr} from "./models/assets/js/mods/uimanager.mod.mjs"
-    console.log(App.init);
+    import {UIManager} from "./models/assets/js/mods/uimanager.mod.mjs"
+    console.log();
     $(document).ready(function(){   
       Emitter.init();
-      Emitter.on("load", funtion(){
-        UIManager.postLoad();
-      })
-      Emitter.off() 
-      UIManager.init();
-        console.log(CONFIG);
-        CONFIG.title = "Home";
-        App.init(CONFIG);        
-    })
+      Emitter.on("load", function(obj){
+        UIManager.load();
+      });
+      Emitter.emit("load",this);
+      //Augment CONFIG object with a Vew specific title
+      CONFIG.title = "Home";
+      App.init(CONFIG);
+    });
   </script>
 </head>
 <body>
