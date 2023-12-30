@@ -1,4 +1,5 @@
-import { UIManager } from '../uimanager.mod.mjs';
+import {Emitter} from "../util/emitter.mod.mjs"
+import { UIManager } from './uimanager.mod.mjs';
 import { Header } from './header.mod.js';
 import { Footer } from './footer.mod.js';
 
@@ -22,10 +23,11 @@ const Layout = (function () {
         /**
          * Renders the title element in the HTML head.
          */
-        renderContent: function (strTitle) {
+        startDocument: function (strTitle) {
+            $('body').append("<body>");
             const objTitle = document.createElement("title");
             objTitle.innerText = strTitle;
-            document.head.appendChild(objTitle);
+            $('head').append(objTitle);
         }
     };
 
@@ -33,10 +35,12 @@ const Layout = (function () {
         /**
          * Attaches event handlers to elements using jQuery.
          */
-        attachEventHandlers: function () {
-            // Example: $('#myButton').click(function () {
-            //   alert('Button clicked');
-            // });
+        attachEvents: function () {
+              Emitter.init();
+              Emitter.on("load", function(obj){
+                UIManager.load();
+              });
+              Emitter.emit("load");
         },
 
         /**
@@ -69,15 +73,15 @@ const Layout = (function () {
      * and calls view and controller functions as needed.
      */
     function init(objConfig) {
+        view.startDocument(objConfig.title);
+
         // Load CSS and JavaScript files
         //pass the CSS and JS library paths to their functions
         controller.loadCssFiles(objConfig.paths.cssDirPath);
         controller.loadJsFiles(objConfig.paths.jsDirPath);
 
         // Call view and controller functions as needed
-        view.renderContent(objConfig.title);
-        UIManager.init();
-        controller.attachEventHandlers();
+        controller.attachEvents();
     }
 
     // Public API

@@ -3,12 +3,18 @@
  */
 const Header = (function () {
     const model = {
+        section: {
+                id: "",
+                classList: "",
+        },
+        strContactNumber: "559-400-5295",
+        strContactEmail: "cmcintosh.js@gmail.com",
         navigationLinks: [
             // Define your navigation links based on the provided format
-            { label: 'Home', href: '#hero', classList: 'nav-link scrollto active' },
-            { label: 'About', href: '#about', classList: 'nav-link scrollto' },
-            { label: 'Services', href: '#services', classList: 'nav-link scrollto' },
-            { label: 'Portfolio', href: '#portfolio', classList: 'nav-link scrollto' },
+            { label: 'Home', href: 'views/index.php', classList: 'nav-link scrollto active' },
+            { label: 'Resume', href: 'views/index.php', classList: 'nav-link scrollto' },
+            { label: 'Services', href: 'views/index.php', classList: 'nav-link scrollto' },
+            { label: 'Portfolio', href: 'views/index.php', classList: 'nav-link scrollto' },
             { label: 'Team', href: '#team', classList: 'nav-link scrollto' },
             {
                 label: 'Drop Down',
@@ -38,34 +44,40 @@ const Header = (function () {
             { label: 'Contact', href: '#contact', classList: 'nav-link scrollto' },
             { label: 'Get Started', href: '#about', classList: 'getstarted scrollto' },
         ],
+        frag: null,
     };
 
     const view = {
         // View functions can be added here if needed
-    }
+    };
 
     const controller = {
+        util: {
+            cre8WClass: function(strName, strList){
+                return $("<" + strName + ">").addClass()
+            },
+        },
         /**
          * Build the navigation menu based on the provided navigationLinks array.
          * @param {string} pageName - The name of the current page.
          * @returns {DocumentFragment} - The document fragment containing the navigation menu.
          */
-
-
         buildNav: function (pageName) {
             const navFragment = document.createDocumentFragment();
             // Loop through the navigationLinks array to create the navigation nodes
             model.navigationLinks.forEach((link) => {
                 const listItem = document.createElement('li');
                 const anchor = document.createElement('a');
-                anchor.textContent = link.label;
+                if (link.hasOwnProperty('label')) {
+                    anchor.textContent = link.label;
+                }
                 anchor.href = link.href;
                 anchor.classList.add(link.classList);
 
                 // Add "active" class to the Home link if it matches the current page
                 if (pageName === 'Home' && link.label === 'Home') {
                     anchor.classList.add('active');
-                } 
+                }
 
                 listItem.appendChild(anchor);
 
@@ -86,10 +98,15 @@ const Header = (function () {
             });
 
             // Create and return the document fragment
-            return navFragment;
+            model.frag = navFragment;
         },
-    }
+    };
+
+
+
+
     function init (objConfig){
+           controller.startSection();
            controllor.buildNav(objConfig.title) 
     }
     // Public API

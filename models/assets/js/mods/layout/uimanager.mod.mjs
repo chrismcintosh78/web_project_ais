@@ -91,15 +91,13 @@ const UIManager = (function() {
       // Reference to the header tag object
       let objHeader = model.header;
       console.log(objHeader);
-    
-      // Reference to the header element using jQuery
-      let $header = $('#header');
+
       
       // Get the initial offset of the header
-      let headerOffset = $header.offset().top;
+      let headerOffset = $('#header').offset().top;
       
       // Reference to the next element
-      let $nextElement = $header.next();
+      let $nextElement = $('#header').next();
       
       const sticky = () => {
         // Current scroll position
@@ -107,11 +105,11 @@ const UIManager = (function() {
         
         if (scrollY >= headerOffset) {
           // Add CSS classes to make the header sticky and apply offset to the next element
-          $header.addClass('fixed-top');
+          $('#header').addClass('fixed-top');
           $nextElement.addClass('scrolled-offset');
         } else {
           // Remove the CSS classes if not scrolled enough
-          $header.removeClass('fixed-top');
+          $('#header').removeClass('fixed-top');
           $nextElement.removeClass('scrolled-offset');
         }
       };
