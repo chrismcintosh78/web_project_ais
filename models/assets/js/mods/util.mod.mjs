@@ -22,7 +22,6 @@ const Utility = (function(){
 
     return {
         init: init,
-        that: this
     }
 })();
 export {Utility}

@@ -27,6 +27,8 @@ const Layout = (function () {
         startDocument: function (strTitle) {
             $('body').append("<body>");
             const objTitle = document.createElement("title");
+            //some in her we will need to call the header module
+            Header.init(strPageName);
             objTitle.innerText = strTitle;
             console.log(Utility.init());
             $('head').append(objTitle);

@@ -49,6 +49,9 @@ const Header = (function () {
 
     const view = {
         // View functions can be added here if needed
+        startSection: () =>{
+            Utility.controller.cre8WClass
+        }
     };
 
     const controller = {
@@ -106,6 +109,7 @@ const Header = (function () {
 
 
     function init (objConfig){
+        console.log(CONFIG)
            controller.startSection();
            controllor.buildNav(objConfig.title) 
     }
