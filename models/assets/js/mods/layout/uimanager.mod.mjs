@@ -68,7 +68,7 @@ const UIManager = (function() {
       view.mblActv8Dropdown();
       view.toggleBacktotop()
       view.navbarlinksActive();
-      view.stickyHeader();
+      //view.stickyHeader();
       if (window.location.hash) {
         if ($(window.location.hash)) {
           scrollto(window.location.hash);

@@ -6,7 +6,7 @@ const Utility = (function(){
 
     };
     const controller = {
-        const cre8WClass = (strTag, strId, strClassList) => {
+        cre8WClass: function(strTag, strId, strClassList){
           return $(`<${strTag}>`, {
             id: strId,
             class: strClassList
@@ -14,10 +14,15 @@ const Utility = (function(){
         },
     };
     function init(){
-        return this;
+        return () => {
+          return this;
+        }
     };
+    console.log(this);
+
     return {
-        init: init
+        init: init,
+        that: this
     }
 })();
 export {Utility}

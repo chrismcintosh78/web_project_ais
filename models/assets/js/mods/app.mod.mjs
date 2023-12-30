@@ -3,9 +3,8 @@
  * - {@link Layout} - Import the Layout module.
  * - {@link Client} - Import the Client module.
  */
-import { Layout } from './layout/layout.mod.mjs';
 import { Client } from './util/client.mod.mjs';
-
+import { Layout } from './layout/layout.mod.mjs';
 /**
  * Model components (to be added).
  *

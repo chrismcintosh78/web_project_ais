@@ -2,6 +2,7 @@ import {Emitter} from "../util/emitter.mod.mjs"
 import { UIManager } from './uimanager.mod.mjs';
 import { Header } from './header.mod.js';
 import { Footer } from './footer.mod.js';
+import { Utility } from "../util.mod.mjs";
 
 /**
  * Layout module for managing CSS and JavaScript files and rendering content.
@@ -27,6 +28,7 @@ const Layout = (function () {
             $('body').append("<body>");
             const objTitle = document.createElement("title");
             objTitle.innerText = strTitle;
+            console.log(Utility.init());
             $('head').append(objTitle);
         }
     };
@@ -81,6 +83,7 @@ const Layout = (function () {
         controller.loadJsFiles(objConfig.paths.jsDirPath);
 
         // Call view and controller functions as needed
+        // all the boilerplate content should exist before calling this
         controller.attachEvents();
     }
 
