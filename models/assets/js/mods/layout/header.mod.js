@@ -66,6 +66,7 @@ const Header = (function () {
                         //create email icon with contact link and append to the contact div
                         let iEmailIcon = objUtil.cre8WClass("i", "", "bi bi-envelope-fill");
                         $("#divSection_Contact").append(iEmailIcon); 
+                        $("#divSection_Contact").append($("<a href='mailto:contact@example.com'>info@example.com</a>"))
         }
     };
 
