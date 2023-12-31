@@ -1,6 +1,7 @@
 /**
  * Header module for managing website navigation.
  */
+import {Utility} from "../util.mod.mjs";
 const Header = (function () {
     const model = {
         section: {
@@ -50,7 +51,21 @@ const Header = (function () {
     const view = {
         // View functions can be added here if needed
         startSection: () =>{
-            Utility.controller.cre8WClass
+            //gather utilities into objUtil
+            let objUtil = Utility.controller;
+
+            //create section tag and append to body
+            let objSection = objUtil.cre8WClass("section", "topbar", "d-flex align-items-center");
+            $("body").append(objSection);
+                //create div to hold section data, and append to section
+                let objSectionDiv = objUtil.cre8WClass("div", "divSection", "container d-flex justify-content-center justify-content-md-between");
+                $("#topbar").append(objSectionDiv);
+                    //create div to hold contact info
+                    let objContactDiv = objUtil.cre8WClass("div", "divSection_Contact", "contact-info d-flex align-items-center");
+                    $("#divSection").append(objContactDiv);    
+                        //create email icon with contact link and append to the contact div
+                        let iEmailIcon = objUtil.cre8WClass("i", "", "bi bi-envelope-fill");
+                        $("#divSection_Contact").append(iEmailIcon); 
         }
     };
 
@@ -108,10 +123,9 @@ const Header = (function () {
 
 
 
-    function init (objConfig){
-        console.log(CONFIG)
-           controller.startSection();
-           controllor.buildNav(objConfig.title) 
+    function init (strTitle){
+        view.startSection();
+          //controllor.buildNav(objConfig.title) 
     }
     // Public API
     return {

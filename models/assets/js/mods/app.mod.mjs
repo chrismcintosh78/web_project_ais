@@ -5,6 +5,7 @@
  */
 import { Client } from './util/client.mod.mjs';
 import { Layout } from './layout/layout.mod.mjs';
+console.log("Importing app.mod.mjs  with\n Client:" + Client + " \t Layout: " + Layout);
 /**
  * Model components (to be added).
  *
@@ -41,7 +42,7 @@ const App = (function(){
        */
       serializeClient: function(objClientModel){
         localStorage.setItem("Client", JSON.stringify(objClientModel));
-        console.log(localStorage.getItem("Client"));
+        
       }
     };
 
@@ -52,13 +53,15 @@ const App = (function(){
      * @param {Object} objConfig - Configuration object with application settings.
      * @returns {void}
      */
-    function init(objConfig){
-      // GET VISITOR INFO AND SERILIZE IT TO COOKIE
+    function init(objConfig, strPageTitle){
+
+      console.log('GET VISITOR INFO AND SERILIZE IT TO COOKIE');
+       
       Client.init();
       controller.serializeClient(Client.getModel());
 
-      // CALL THE LAYOUT MODULE TO START INCLUDING NEEDED LIBRARIES AND GENERATE BOILER_PLATE
-      Layout.init(objConfig);
+      console.log("CALL THE LAYOUT MODULE TO START INCLUDING NEEDED LIBRARIES AND GENERATE BOILER_PLATE");
+      Layout.init(objConfig, strPageTitle);
     };
 
     /**
@@ -72,3 +75,4 @@ const App = (function(){
     };
 })();
 export {App};
+console.log("App exported");

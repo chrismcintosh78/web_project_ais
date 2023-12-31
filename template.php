@@ -6,14 +6,14 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <script type="text/javascript" language="javascript" src="models/assets/js/vendor/jquery.js"></script> 
   <script type="module" defer>
-  import {CONFIG} from "./models/assets/js/mods/config.mod.mjs";
-    import {Utility} from "./models/assets/js/mods/util.mod.mjs";
+    import {CONFIG} from "./models/assets/js/mods/config.mod.mjs";
     import {App} from "./models/assets/js/mods/app.mod.mjs";
-    console.log(Utility);
-    $(document).ready(function(){
+    console.log("Starting template.php with\n CONFIG:" + CONFIG + " \t App: " + App);
+    $(function(){
+      console.log('template.php Loaded');
+      console.log(CONFIG);
       //Augment CONFIG object with a Vew specific title
-      CONFIG.title = "Home";
-      App.init(CONFIG);
+      App.init(CONFIG, "Home");
     });
   </script>
 </head>

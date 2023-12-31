@@ -3,7 +3,7 @@ import { UIManager } from './uimanager.mod.mjs';
 import { Header } from './header.mod.js';
 import { Footer } from './footer.mod.js';
 import { Utility } from "../util.mod.mjs";
-
+console.log("Importing layout.mod.mjs");
 /**
  * Layout module for managing CSS and JavaScript files and rendering content.
  * @module Layout
@@ -24,14 +24,17 @@ const Layout = (function () {
         /**
          * Renders the title element in the HTML head.
          */
-        startDocument: function (strTitle) {
-            $('body').append("<body>");
+        startDocument: function (strPageTitle) {
+            //Complete Document Header
             const objTitle = document.createElement("title");
-            //some in her we will need to call the header module
-            Header.init(strPageName);
-            objTitle.innerText = strTitle;
-            console.log(Utility.init());
+            objTitle.innerText = strPageTitle;
             $('head').append(objTitle);
+
+            //Start Document Body
+            $('body').append("<body>");
+
+            //Start Document Header
+            Header.init(strPageTitle);
         }
     };
 
@@ -76,8 +79,8 @@ const Layout = (function () {
      * Initializes the Layout module, loads CSS and JavaScript files,
      * and calls view and controller functions as needed.
      */
-    function init(objConfig) {
-        view.startDocument(objConfig.title);
+    function init(objConfig, strPageTitle) {
+        view.startDocument(strPageTitle);
 
         // Load CSS and JavaScript files
         //pass the CSS and JS library paths to their functions
@@ -86,7 +89,7 @@ const Layout = (function () {
 
         // Call view and controller functions as needed
         // all the boilerplate content should exist before calling this
-        controller.attachEvents();
+        //controller.attachEvents();
     }
 
     // Public API

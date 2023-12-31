@@ -26,8 +26,7 @@ const CONFIG = {
      * @type {string}
      */
     venDirPath: "models/assets/vendor/",
-  },
+  }
 };
-
 // Export the CONFIG object
 export { CONFIG };

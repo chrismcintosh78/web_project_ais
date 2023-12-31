@@ -1,8 +1,9 @@
+console.log("Importing Utility ");
 const Utility = (function(){
     const model = {
 
     };
-    const veiw = {
+    const view = {
 
     };
     const controller = {
@@ -13,15 +14,11 @@ const Utility = (function(){
           });
         },
     };
-    function init(){
-        return () => {
-          return this;
-        }
-    };
-    console.log(this);
-
+    
     return {
-        init: init,
+        model: model,
+        controller: controller,
+        view: view
     }
 })();
 export {Utility}
