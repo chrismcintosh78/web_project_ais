@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"folders": [
 		{
 			"path": "."
@@ -8,4 +9,11 @@
 		}
 	],
 	"settings": {}
+=======
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
+>>>>>>> 6d90d8db5054128f3eefefda4977b6a482c5c153
 }
