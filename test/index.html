@@ -1,4 +1,22 @@
-<script src="http://unpkg.com/vue@next">
+<html>
+<head>
+<script src="http://unpkg.com/vue@next"></script>
 
-
+</head>
+<body>
+<div id="root">
+    <h1>{{greeting}}</h1>
+    <input v-model="greeting" />
+</div>
+<script>
+    //v- are directives
+    //everything in data is within scope
+new Vue({
+    el: "#root",
+    date: {
+        greeting: "hello",
+    }
+})
 </script>
+</body>
+</html>
