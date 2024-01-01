@@ -69,6 +69,8 @@ const Header = (function () {
                         $("#divSection_Contact").append($("<a href='mailto:contact@example.com'>info@example.com</a>"))
                         let iPhoneIcon = objUtil.cre8WClass("i", "", "bi bi-phone-fill phone-icon");
                         $("#divSection_Contact").append(iPhoneIcon); 
+                        $("#divSection_Contact").append($("1-559-400-5295"))
+
         }
     };
 
