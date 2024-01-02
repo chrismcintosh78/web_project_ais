@@ -78,7 +78,7 @@ const Header = (function () {
                         $("#divSection_Social").append('<a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>');
         },
         startHeader: function(){
-
+            let strTitle = "";
         },
     };
 
